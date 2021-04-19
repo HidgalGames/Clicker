@@ -2,27 +2,33 @@
 
 public class TouchDetector : MonoBehaviour
 {
-    public Location CurrentLocation;
-    private Entity currentEntity;
+    public static TouchDetector Instance;
 
-    void Start()
-    {
-        CurrentLocation.onEntitySpawn += SetCurrentEntity;
-    }
+    public delegate void OnTouch(Vector3 touchPosition);
+    public event OnTouch OnTouchEvent;
 
-    private void SetCurrentEntity(GameObject entity)
+    private Camera mainCamera;
+
+    void Awake()
     {
-        currentEntity = CurrentLocation.GetCurrentEntity().GetComponent<Entity>();
+        if (!Instance)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
+        mainCamera = Camera.main;
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (currentEntity)
-            {
-                currentEntity.DoOnTouchAction(Input.mousePosition);
-            }
+            Vector3 touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 1f));
+            OnTouchEvent?.Invoke(touchPosition);
         }
     }
 }

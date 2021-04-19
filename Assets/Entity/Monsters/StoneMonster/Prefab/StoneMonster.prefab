@@ -223,7 +223,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4788319935855200}
   - component: {fileID: -2136023654205201199}
-  - component: {fileID: 102630120040089038}
   - component: {fileID: 1871388213578716927}
   m_Layer: 0
   m_Name: StoneMonster
@@ -267,20 +266,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &102630120040089038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713781036754730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89fdee42d0d8bea4f820c4b77e6f17b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canBeDamaged: 1
-  damageableBehaviour: {fileID: 1871388213578716927}
 --- !u!114 &1871388213578716927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ba5d5bea4903c44b75969a483e318d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
   maxHealth: 10
 --- !u!1 &1753159918419610
 GameObject:

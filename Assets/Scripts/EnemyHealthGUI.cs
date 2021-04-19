@@ -6,7 +6,7 @@ public class EnemyHealthGUI : MonoBehaviour
     private Text healthText;
     public Location CurrentLocation;
 
-    private Damageable currentEntity;
+    private DamageableEntity currentDamageableEntity;
 
     void Awake()
     {
@@ -15,15 +15,19 @@ public class EnemyHealthGUI : MonoBehaviour
 
     void Start()
     {
-        CurrentLocation.onEntitySpawn += SetCurrentEntity;
+        CurrentLocation.OnEntitySpawnEvent += SetCurrentEntity;
     }
 
-    private void SetCurrentEntity(GameObject entity)
+    private void SetCurrentEntity(GameObject entityObject)
     {
-        currentEntity = CurrentLocation.GetCurrentEntity().GetComponent<Damageable>();
-        if (currentEntity)
+        currentDamageableEntity = entityObject.GetComponent<DamageableEntity>(); 
+        if (currentDamageableEntity)
         {
-            currentEntity.onHealthChange += OnHealthChanged;
+            currentDamageableEntity.OnHealthChangeEvent += OnHealthChanged;
+        }
+        else
+        {
+            healthText.text = "";
         }
     }
 
@@ -37,6 +41,5 @@ public class EnemyHealthGUI : MonoBehaviour
         {
             healthText.text = "";
         }
-
     }
 }

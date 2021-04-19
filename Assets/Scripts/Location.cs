@@ -8,7 +8,7 @@ public class Location : MonoBehaviour
     private GameObject currentEntity;
 
     public delegate void EntitySpawned(GameObject entity);
-    public event EntitySpawned onEntitySpawn;
+    public event EntitySpawned OnEntitySpawnEvent;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class Location : MonoBehaviour
     private void SpawnEntity()
     {
         currentEntity = Instantiate(entitiesList[0], entitySpawnPoint);
-        onEntitySpawn?.Invoke(currentEntity);
+        OnEntitySpawnEvent?.Invoke(currentEntity);
     }
 
     public GameObject GetCurrentEntity()
