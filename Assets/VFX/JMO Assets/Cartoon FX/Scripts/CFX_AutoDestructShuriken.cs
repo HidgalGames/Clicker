@@ -22,25 +22,13 @@ public class CFX_AutoDestructShuriken : MonoBehaviour
 	{
 		ParticleSystem ps = this.GetComponent<ParticleSystem>();
 		
-<<<<<<< Updated upstream
-		while(true && ps)
-=======
 		while(true && ps != null)
->>>>>>> Stashed changes
 		{
 			yield return new WaitForSeconds(0.5f);
 			if(!ps.IsAlive(true))
 			{
 				if(OnlyDeactivate)
 				{
-<<<<<<< Updated upstream
-						this.gameObject.SetActive(false);
-				}
-                else
-                {
-					GameObject.Destroy(this.gameObject);
-				}
-=======
 					#if UNITY_3_5
 						this.gameObject.SetActiveRecursively(false);
 					#else
@@ -49,7 +37,6 @@ public class CFX_AutoDestructShuriken : MonoBehaviour
 				}
 				else
 					GameObject.Destroy(this.gameObject);
->>>>>>> Stashed changes
 				break;
 			}
 		}
