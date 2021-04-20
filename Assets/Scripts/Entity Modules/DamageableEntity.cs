@@ -8,15 +8,32 @@ public class DamageableEntity : MonoBehaviour
     private float currentHealth;
     [SerializeField] private float maxHealth = 10f;
 
+<<<<<<< Updated upstream
     private bool isDead = false;
+=======
+    [HideInInspector] public bool isDead = false;
+>>>>>>> Stashed changes
 
     public delegate void OnHealthChange(float currentHealth);
     public event OnHealthChange OnHealthChangeEvent;
 
+<<<<<<< Updated upstream
+=======
+    public delegate void OnEntityDeath();
+    public event OnEntityDeath OnEntityDeathEvent;
+
+    private SphereCollider col;
+
+>>>>>>> Stashed changes
     void Awake()
     {
         animator = GetComponent<Animator>();
         TouchDetector.Instance.OnTouchEvent += OnTouchAction;
+<<<<<<< Updated upstream
+=======
+
+        col = GetComponent<SphereCollider>(); //Для Теста
+>>>>>>> Stashed changes
     }
 
     private void Start()
@@ -32,6 +49,17 @@ public class DamageableEntity : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    void OnMouseDown()
+    {
+        if (isDead)
+        {
+            Respawn(); // Исключительно для теста
+        }
+    }
+
+>>>>>>> Stashed changes
     public bool TakeDamage(float damage)
     {
         if (!isDead)
@@ -42,7 +70,10 @@ public class DamageableEntity : MonoBehaviour
         }
         else
         {
+<<<<<<< Updated upstream
             Respawn(); // Исключительно для теста
+=======
+>>>>>>> Stashed changes
             return false;
         }
     }
@@ -64,12 +95,27 @@ public class DamageableEntity : MonoBehaviour
     {
         isDead = true;
         animator.SetBool("IsDead", true);
+<<<<<<< Updated upstream
+=======
+
+        OnEntityDeathEvent?.Invoke();
+
+        col.enabled = true;
+>>>>>>> Stashed changes
     }
 
     private void Respawn()
     {
+<<<<<<< Updated upstream
         ChangeHealth(maxHealth);
         isDead = false;
         animator.SetBool("IsDead", false);
+=======
+        animator.SetBool("IsDead", false);
+        col.enabled = false;
+        ChangeHealth(maxHealth);
+
+        //isDead = false;
+>>>>>>> Stashed changes
     }
 }
