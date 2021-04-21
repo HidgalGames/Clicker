@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.1713238, g: 0.34753582, b: 0.7949725, a: 1}
+  m_IndirectSpecularColor: {r: 0.17123564, g: 0.34746528, b: 0.79498845, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8f7cc5384642942a7b7ae318db12ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentLocation: {fileID: 1266526905}
+  CurrentLocation: {fileID: 0}
 --- !u!1 &1099478036
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,12 +571,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1266526900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b0c069f96e741744bd87f61873dedf7, type: 3}
+  m_Script: {fileID: 11500000, guid: 96f6a823f1d37094486b45ed5728e323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entitiesList:
+  heroPositions: []
+  locationEntities:
   - {fileID: 1713781036754730, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
-  entitySpawnPoint: {fileID: 1953407444}
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 2073483224}
   - component: {fileID: 2073483223}
   m_Layer: 5
-  m_Name: GUI
+  m_Name: GUI Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

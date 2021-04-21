@@ -7,6 +7,12 @@ public class DropItemEditWindow : EditorWindow
     public int currentItemIndex;
     public ItemToDrop item = new ItemToDrop();
 
+    private static float standartMinHeight = 200f;
+    //private static float standartMinWidth = 450f;
+
+    private float minHeight = 200f;
+    private float minWidth = 450f;
+
     public static DropItemEditWindow ShowWindow()
     {
         DropItemEditWindow window = (DropItemEditWindow)EditorWindow.CreateWindow<DropItemEditWindow>();
@@ -17,9 +23,12 @@ public class DropItemEditWindow : EditorWindow
 
     void OnGUI()
     {
-        minSize = new Vector2(450, 200);
+        minSize = new Vector2(minWidth, minHeight);
+        maxSize = new Vector2(2048f, minHeight);
 
         EditorGUILayout.Space();
+
+        DrawPreviewImage();
 
         item.ItemObject = (GameObject)EditorGUILayout.ObjectField("Префаб", item.ItemObject, typeof(GameObject), false);
 
@@ -28,6 +37,27 @@ public class DropItemEditWindow : EditorWindow
         ShowDropStats();
 
         ShowCancelApplyButtons();
+    }
+
+    private void DrawPreviewImage()
+    {
+        if (item.ItemObject)
+        {
+            Texture2D preview = AssetPreview.GetAssetPreview(item.ItemObject);
+            if (preview)
+            {
+                Vector2 imageSize = new Vector2(100f, 100f);
+                Rect previewPosition = new Rect(new Vector2(position.width / 2 - imageSize.x / 2, 10f), imageSize);
+                EditorGUI.DrawPreviewTexture(previewPosition, preview);
+                EditorGUILayout.Space(imageSize.y + 10f);
+
+                minHeight = standartMinHeight + imageSize.y + 10f;
+            }
+            else
+            {
+                minHeight = standartMinHeight;
+            }
+        }
     }
 
     private void ShowDropStats()

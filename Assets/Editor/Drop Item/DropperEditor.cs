@@ -21,10 +21,10 @@ public class DropperEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        componentObject.Update();
+
         EditorGUILayout.Space();
         component.dropTriggerType = (DropTrigger)EditorGUILayout.EnumPopup("Drop Trigger", component.dropTriggerType);
-
-        componentObject.Update();
 
         EditorGUILayout.Space();
         EditorGUILayout.PropertyField(itemsList, false);
