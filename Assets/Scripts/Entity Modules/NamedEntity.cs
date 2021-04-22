@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class NamedEntity : MonoBehaviour
 {
     public bool IsUnknown = false;
-    [SerializeField] private TranslatableString EntityName;
+    public TranslatableString EntityName;
 
     private Text textField;
 
@@ -30,7 +30,7 @@ public class NamedEntity : MonoBehaviour
         {
             return "?????";
         }
-        Debug.Log("lol");
+
         return EntityName;
     }
 }
