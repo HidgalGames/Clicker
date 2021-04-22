@@ -39,14 +39,6 @@ public class DamageableEntity : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
-    {
-        if (isDead)
-        {
-            Respawn(); // Исключительно для теста
-        }
-    }
-
     public bool TakeDamage(float damage)
     {
         if (!isDead)

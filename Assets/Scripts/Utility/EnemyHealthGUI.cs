@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class EnemyHealthGUI : MonoBehaviour
 {
     private Text healthText;
-    public Location CurrentLocation;
 
     private DamageableEntity currentDamageableEntity;
 
@@ -15,12 +14,12 @@ public class EnemyHealthGUI : MonoBehaviour
 
     void Start()
     {
-        CurrentLocation.OnEntitySpawnEvent += SetCurrentEntity;
+        Location.Instance.OnEntitySpawnEvent += SetCurrentEntity;
     }
 
     private void SetCurrentEntity(GameObject entityObject)
     {
-        currentDamageableEntity = entityObject.GetComponent<DamageableEntity>(); 
+        currentDamageableEntity = Location.Instance.GetDamageableEntity(); 
         if (currentDamageableEntity)
         {
             currentDamageableEntity.OnHealthChangeEvent += OnHealthChanged;
